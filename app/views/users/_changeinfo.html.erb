@@ -1,0 +1,74 @@
+<div class="modal fade" id="changeinfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">更改信息</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <%= form_for(@user_form, url: user_path(current_user), method: :patch) do |f| %>
+      <div class="modal-body pl-5 pr-5" id="edituserinfo">
+        <div class="modal-body mb-0">
+          <%#= hidden_field_tag :users, current_user[:id] %>
+
+          <div class="md-form form-sm">
+            <!-- <i class="fa fa-user prefix"></i> -->
+            <%= f.label :name, '用户名' %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+
+          <div class="md-form form-sm">
+            <!-- <i class="fa fa-lock prefix"></i> -->
+            <%= f.label :sex, "性别" %>
+            <%= f.text_field :sex, class: 'form-control' %>
+          </div>
+
+          <div class="md-form form-sm">
+            <!-- <i class="fa fa-lock prefix"></i> -->
+            <%= f.label :phonenumber, "电话" %>
+            <%= f.text_field :phonenumber, class: 'form-control' %>
+          </div>
+
+          <div class="md-form form-sm">
+            <!-- <i class="fa fa-lock prefix"></i> -->
+            <%= f.label :status, "职业" %>
+            <%= f.text_field :status, class: 'form-control' %>
+          </div>
+
+          <div class="md-form form-sm">
+            <!-- <i class="fa fa-lock prefix"></i> -->
+            <%= f.label :essay, "个性签名" %>
+            <%= f.text_field :essay, class: 'form-control' %>
+          </div>
+
+          <div class="file-field">
+            <div class="btn btn-primary btn-sm float-left">
+              <span>选择头像</span>
+              <%= f.file_field :picture %>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="上传一个图片">
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+
+        <%= button_tag(type: "submit", class: "btn btn-warning waves-effect waves-light") do %>
+        提交
+        <% end %>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+      </div>
+
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  $("#edituserinfo").parent().addClass("md-form")
+</script>

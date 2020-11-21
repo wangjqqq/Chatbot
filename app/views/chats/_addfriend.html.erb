@@ -1,0 +1,64 @@
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 150%; left: -25%">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">添加好友</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-incline" id="search-friend">
+          <div class="md-form input-group m-0">
+            <%= text_field_tag :query, params[:query], placeholder: "请输入用户名", class: 'form-control' %>
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-md btn-secondary m-0 px-3 waves-effect waves-light" type="button" id="MaterialButton-addon2">搜索</button>
+            </div>
+
+            <table class="table table-hover text-center" id="result">
+              <thead>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $('#search-friend').submit(function () {
+    var valuesToSubmit = $(this).serialize();
+    $.ajax({
+      type: 'GET',
+      url: '/users/index_json',
+      dataType: "JSON",
+      data: valuesToSubmit,
+      success: function (data) {
+        $('#result tr').remove();
+        $('#result text').remove();
+
+        if (data != "") {
+          $('#result thead').html("<tr><th>姓名</th><th>性别</th><th>联系方式</th><th></th></tr>");
+          $.each(data, function (index, user) {
+            $('#result tbody').append("<tr><td class='p-2' style='vertical-align:middle'>" + user.name + "</td><td class='p-2' style='vertical-align:middle'>" + user.sex + "</td><td class='p-2' style='vertical-align:middle'>" + user.email + "</td><td class='p-2' style='vertical-align:middle'><a class='btn btn-success btn-sm p-2' style='vertical-align:middle' data-method='post' href='/friendships?friend_id=" + user.id + "'>添加</a></td></tr>");
+          });
+        } else {
+          $('#result tbody').append("<text><br><br>没有找到符合条件的用户</text>")
+        }
+
+      }, error: function () {
+        alert('error in post');
+      }
+    });
+    return false;
+  });
+
+</script>

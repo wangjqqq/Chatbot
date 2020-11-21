@@ -1,0 +1,59 @@
+<% if logged_in? %>
+<footer class="page-footer text-center text-md-left pt-2 mt-5 ">
+    <div class="footer-copyright py-3 text-center">
+        <div class="container-fluid">
+            © 2018 Copyright: <a href="http://www.MDBootstrap.com"> 中国科学院大学 </a>
+
+        </div>
+    </div>
+</footer>
+<% end %>
+
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/mdb.min.js"></script>
+<div class="hiddendiv common"></div>
+<script>
+  $(".button-collapse").sideNav();
+  new WOW().init();
+  $(document).ready(function() {$('.mdb-select').materialSelect();});
+        
+  bodyHeight = document.body.clientHeight;
+  docHeight = document.documentElement.clientHeight;
+  bodyWidth = document.body.clientWidth;
+  if (bodyHeight < docHeight){
+    bodyHeight = docHeight
+  }
+  bgsize = ""
+  if (bodyHeight * 1.5 < bodyWidth){
+    bgsize = bodyWidth + "px auto";
+  }
+  else{
+    bgsize = "auto " + bodyHeight + "px"
+  }
+  $("body").css({
+    "background": "url('/img/bg.jpg') no-repeat",
+    "background-size": bgsize
+  });
+
+  $(window).resize(function(){
+    bodyHeight = document.body.clientHeight;
+    docHeight = document.documentElement.clientHeight;
+    bodyWidth = document.body.clientWidth;
+    if (bodyHeight < docHeight){
+      bodyHeight = docHeight
+    }
+    bgsize = ""
+    if (bodyHeight * 1.5 < bodyWidth){
+      bgsize = bodyWidth + "px auto";
+    }
+    else{
+      bgsize = "auto " + bodyHeight + "px"
+    }
+    $("body").css({
+      "background": "url('/img/bg.jpg') no-repeat",
+      "background-size": bgsize
+    });
+  })
+</script>
+<div class="drag-target" style="left: 0px; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>

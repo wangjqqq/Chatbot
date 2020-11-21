@@ -1,0 +1,26 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <div class="card">
+
+      <ul class="nav md-pills pills-secondary">
+        <% current_user.chats.each do |chatroom| %>
+        <li class="nav-item">
+          <% if @chat.id == chatroom[:id] %>
+          <%= link_to chat_path(chatroom), class: 'nav-link active' do %>
+          <i class="fa fa-wechat fa-5"></i> <%= truncate(chatroom.name, length: 10) %>
+          <text id="chatroom-<%= chatroom.id %>"></text>
+          <% end %>
+          <% else %>
+          <%= link_to chat_path(chatroom), class: 'nav-link' do %>
+          <i class="fa fa-wechat fa-5"></i> <%= truncate(chatroom.name, length: 10) %>
+          <text id="chatroom-<%= chatroom.id %>"></text>
+          <% end %>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+
+    </div>
+
+  </div>
+</div>

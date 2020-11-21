@@ -1,0 +1,25 @@
+<body class="light-blue-skin" aria-busy="true">
+  <%= render 'homes/header' %>
+
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="modal-dialog cascading-modal" role="document">
+            <div class="modal-content">
+              <div class="modal-header light-blue darken-3 white-text waves-effect waves-light">
+                <h4 class="title"><i class="fa fa-pencil"></i> 注册</h4>
+              </div>
+              <%= render 'users/register' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+  </main>
+
+  <%= render 'layouts/footer' %>
+
+</body>

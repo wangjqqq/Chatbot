@@ -1,0 +1,59 @@
+<% @friends.each do |user| %>
+<li>
+  <a class="collapsible-header waves-effect arrow-r py-2" style="height: 50px; font-size: 1rem;">
+    <i class="fa fa-user" style="font-size: 1rem;"></i> 
+    <b><%= user.name %></b>
+    <i class="fa fa-angle-down rotate-icon" style="font-size: 1.3rem;"></i>
+  </a>
+  <div class="collapsible-body">
+
+    <div class="card testimonial-card">
+
+      <div class="card-up teal lighten-2">
+      </div>
+
+      <div class="avatar mx-auto white">
+
+        <% if user.picture? %>
+          <%= image_tag user.picture.url, class: "rounded-circle img-fluid", style: "height:110px;width:110px", alt: "avatar mx-auto white" %>
+        <% else %>
+           <%= image_tag "user-icon.png", class: "rounded-circle img-fluid", style: "height:110px;width:110px", alt: "avatar mx-auto white" %>
+        <% end %>
+        <!-- <img src="img/head.jpg" alt="avatar mx-auto white" class="rounded-circle img-fluid"> -->
+      </div>
+
+      <div class="card-body black-text">
+        <h4 class="card-title mt-1"><%= user.name %></h4>
+        <hr>
+        <p><i class="fa fa-quote-left"></i><%= user.essay %></p>
+        <hr>
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group ml-4 pl-2" role="group" aria-label="First group">
+
+            <a href="/articles/<%= user.id %>" class="pl-0">
+              <button type="button" class="btn cyan lighten-2">动态
+              </button>
+            </a>
+            <%= form_for Chat.new, url: chats_path, method: :post do |f| %>
+            <%= hidden_field_tag :users, [user.id] %>
+            <%= button_tag(:class => "btn blue lighten-2") do %>
+            聊天
+            <% end %>
+            <% end %>
+            <%= link_to friendship_path(user), method: :delete, class: "p-0"  do %>
+            <button type="button" class="btn indigo lighten-2">删除</button>
+            <% end %>
+            <!-- <button type="button" class="btn btn-lg cyan lighten-2">Info</button> -->
+            <!-- <button type="button" class="btn btn-lg blue lighten-2">Chat</button> -->
+            <!-- <button type="button" class="btn btn-lg indigo lighten-2">Delete</button> -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</li>
+<% end %>

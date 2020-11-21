@@ -1,0 +1,5 @@
+<div style="display: none">
+	<%= @currentallchat.each do |chat| %>
+		<%= sync_new partial: 'message_toastr', resource: Message.new, scope: chat, refetch: true %>
+	<% end %>
+</div>

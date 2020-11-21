@@ -1,0 +1,179 @@
+<div class="card card-cascade">
+  <div class="view view-cascade gradient-card-header purple lighten-2 p-2">
+      <div class="row">
+        <div class="col-md-3 pt-2">
+          <h4>房间信息</h4>
+        </div>
+        <div class="col-md-9 text-right">
+
+        <% if current_user.id==@chat.admin_id %>
+        <% if @chat.users[0][:email] == "robot@test.com" || @chat.users[1][:email] == "robot@test.com" %>
+        <% else %>
+        
+        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#chatroomadduser">
+          添加
+        </button>
+        <div class="modal fade" id="chatroomadduser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">加入用户</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <%= form_for @chat, url: add_user_chat_path(@chat), method: :post, role: 'form' do |f| %>
+              <div class="modal-body">
+
+                <%= select_tag :users, options_for_select(@friends_out_chat.map { |user| [user.name, user.id] }), class: "mdb-select md-form colorful-select dropdown-default", multiple: "multiple", multiple: true, style: "width: 100%" %>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <%= f.submit '确定', class: 'btn btn-primary btn-sm' %>
+              </div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#transroomadmin">
+          房主转移
+        </button>
+        <div class="modal fade" id="transroomadmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">移交管理权限</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <%= form_for @chat, url: trans_auth_chat_path(@chat), method: :patch, role: 'form' do |f| %>
+              <div class="modal-body">
+                <%= select_tag :admin_id, options_for_select(@users_in_chat.map { |user| [user.name, user.id] }), class: "mdb-select md-form colorful-select dropdown-danger", style: "width: 100%" %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <%= f.submit '确定', class: 'btn btn-primary btn-sm' %>
+              </div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+        <% end %>
+
+
+        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editroomname">
+          编辑
+        </button>
+        <div class="modal fade" id="editroomname" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">编辑房间名</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <%= form_for @chat, url: chat_path(@chat), method: :patch, role: "form" do |f| %>
+              <div class="modal-body">
+
+                <div class="md-form">
+                  <%= f.text_field :name, class: "form-control" %>
+                  <label for="name">填入新的房间名</label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <%= f.submit '确定', class: 'btn btn-primary btn-sm' %>
+              </div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+
+        <% end %>
+
+          <%= link_to delete_user_chat_path(user_id: current_user.id, id: @chat.id), method: :delete, class: 'btn btn-danger btn-sm m-0' do %>
+              退出房间
+          <% end %>
+        </div>
+      </div>
+    <!-- </h4> -->
+  </div>
+  <div class="card-body">
+    <p class="card-text pt-2">
+      房间名: <%= @chat.name %>
+    </p>
+    <hr>
+    <p class="card-text">
+      在线用户:<br>
+      <div class="row custom-scrollbar scrollbar-near-moon" style="height: 215px; max-height: 215px; overflow-y: auto;">
+        <% @onchatuser.each do |user| %>
+          <div class="col-md-2">
+            <div class="card card-cascade" style="width: 70px; height: 100px">
+              <div class="view view-cascade overlay">
+
+        <% if user.picture? %>
+          <%= image_tag user.picture.url, class: "card-img-top", style: "height: 70px; width: 70px", alt: "normal" %>
+        <% else %>
+           <%= image_tag "user-icon.png", class: "card-img-top", style: "height: 70px; width: 70px", alt: "normal" %>
+        <% end %>
+
+                <% if current_user.id==@chat.admin_id %>
+                <% if current_user.id!=user.id %>
+                <%= link_to delete_user_chat_path(user_id: user.id, id: @chat.id), method: :delete, class: 'm-0 mb-2', style:'color:red;position:absolute;top:0%;right:0%' do %>
+                <i class="fa fa-remove"></i>
+                <% end %>
+                <% end %>
+                <% end %>
+                <a href="/articles/<%= user.id %>"><div class="mask rgba-white-slight"></div></a>
+              </div>
+              <div class="card-body card-body-cascade text-center p-0 pt-2"  style="height: 30px; overflow: hidden;">
+                <%= truncate(user.name,length: 6) %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </p>
+    <hr>
+    <p class="card-text">
+    所有用户:<br>
+    <div class="row custom-scrollbar scrollbar-near-moon" style="height: 215px; max-height: 215px; overflow-y: auto;">
+    <% @chat.users.each do |user| %>
+      <div class="col-md-2">
+        <div class="card card-cascade" style="width: 70px; height: 100px">
+          <div class="view view-cascade overlay">
+
+        <% if user.picture? %>
+          <%= image_tag user.picture.url, class: "card-img-top", style: "height: 70px; width: 70px", alt: "normal" %>
+        <% else %>
+           <%= image_tag "user-icon.png", class: "card-img-top", style: "height: 70px; width: 70px", alt: "normal" %>
+        <% end %>
+
+
+            <% if current_user.id==@chat.admin_id %>
+            <% if current_user.id!=user.id %>
+            <%= link_to delete_user_chat_path(user_id: user.id, id: @chat.id), method: :delete, class: 'm-0 mb-2', style:'color:red;position:absolute;top:0%;right:0%' do %>
+            <i class="fa fa-remove"></i>
+            <% end %>
+            <% end %>
+            <% end %>
+            <a href="/articles/<%= user.id %>"><div class="mask rgba-white-slight"></div></a>
+          </div>
+          <div class="card-body card-body-cascade text-center p-0 pt-2" style="height: 30px; overflow: hidden;">
+            <%= truncate(user.name,length: 6) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+    </p>
+  </div>
+</div>
