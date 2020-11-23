@@ -1,0 +1,19 @@
+SMOOTH_SCROLL_DURATION: 
+before 
+$(".smooth-scroll").on("click","a" 
+delete
+let SMOOTH_SCROLL_DURATION=700;
+change
+animate({scrollTop:$(t).offset().top-e},SMOOTH_SCROLL_DURATION)
+to
+animate({scrollTop:$(t).offset().top-e},700)
+
+dropdownSelectors: 
+before
+function dropdownEffectData(t){let
+delete
+let dropdownSelectors=$(".dropdown, .dropup");
+change
+dropdownSelectors.on({"show.bs.dropdown"(){let t
+to
+$(".dropdown, .dropup").on({"show.bs.dropdown"(){let t

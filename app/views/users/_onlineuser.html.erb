@@ -1,0 +1,60 @@
+<div class="card card-cascade narrower mt-5">
+  <div class="view view-cascade gradient-card-header light-blue lighted-5 narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+    <a href="" class="white-text mx-3">
+      <% if current_user.id == @userinfo.id %>
+        发现新朋友
+        <% else %>
+        可能认识的人
+        <% end %>
+    </a>
+    <div>
+      <!-- <a href="/chats/#timeline" type="button" class="btn btn-success py-2 px-4">刷新</a> -->
+      <% if current_user.id == @userinfo.id %>
+      <a href="/chats" type="button" class="btn btn-success py-2 px-4">刷新</a>
+      <% else %>
+      <a href="/articles/<%= @userinfo.id %>" type="button" class="btn btn-success py-2 px-4">刷新</a>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="px-3 pb-5">
+    <ul class="list-group list-group-flush custom-scrollbar scrollbar-near-moon"  style="max-height: 500px; overflow-y: auto">
+      <ul class="list-group">
+        <% if @onlineusers.count == 0 %>
+        <p class="p-4 card-text text-center">
+      <% if current_user.id == @userinfo.id %>
+        没有什么发现
+        <% else %>
+        没有什么发现
+        <% end %>
+        </p>
+        <% end %>
+        <% @onlineusers.each do |user| %>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-2">
+              <a class="text-white btn-floating" href="/articles/<%= user.id %>">
+
+        <% if user.picture? %>
+          <%= image_tag user.picture.url, class: "img-sm rounded float-left" %>
+        <% else %>
+           <%= image_tag "user-icon.png", class: "img-sm rounded float-left" %>
+        <% end %>
+
+              </a>
+            </div>
+            <div class="col-md-8 mt-2 pt-1">
+              <%= user.name %>
+              <p class="card-text"><%= truncate(user.essay,lenght:20) %></p>
+            </div>
+            <div class="col-md-2 text-right pt-2">
+              <a class='btn btn-info btn-sm px-2 py-1 mt-3' data-method='post' href="/friendships?friend_id=<%= user.id %>"><i class="fa fa-plus"></i></a>
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+    </ul>
+  </div>
+
+</div>

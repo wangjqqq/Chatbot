@@ -1,0 +1,119 @@
+<body class="light-blue-skin" aria-busy="true">
+  <%= render 'homes/header' %>
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="card-body mt-5">
+            <h1 class="card-title text-center">功能特性</h1>
+
+            <div class="mt-5">
+              <h3>登录注册</h3>
+              <div class="card-text pl-5">
+                <h5 class="card-text mt-1">登录：用户登录之后可以使用聊天系统，登录使用注册的邮箱和密码</h5>
+                <h5 class="card-text mt-1">注册：用户可以注册账号，注册收集用户名，邮箱，密码，密码加密后存入后台，邮箱不能和他人邮箱相同</h5>
+                <h5 class="card-text mt-1">记住我：在本地存储Cookie，登录中勾选记住我，关闭浏览器后，下次开启浏览器无需登录</h5>
+                <h5 class="card-text mt-1">退出登录：清空session信息，回到登录界面</h5>
+              </div>
+            </div>
+            <div class="mt-5">
+              <h3>用户模块</h3>
+              <div class="card-text pl-5">
+                <h5 class="card-text mt-1">用户主页：登录之后进入，用户主页，即为功能聚合界面</h5>
+                <h5 class="card-text mt-1">用户信息面板：显示用户头像，用户名，邮箱，性别，职业，电话，个性签名</h5>
+                <h5 class="card-text mt-1">修改用户信息：点击用户信息面板修改信息，可以修改用户名，性别，个性签名</h5>
+                <h5 class="card-text mt-1">自定义头像：用户可以在修改信息界面上传自己的头像</h5>
+              </div>
+            </div>
+            <div class="mt-5">
+              <h3>好友模块</h3>
+              <div class="card-text pl-5">
+                <h5 class="card-text mt-1">好友列表：登录之后，左侧为好友列表</h5>
+                <h5 class="card-text mt-1">好友信息预览：点击左侧好友列表中的好友，出现好友简要信息，查看好友动态，聊天，删除</h5>
+                <h5 class="card-text mt-1">添加好友：登录之后，左侧边栏圆形按钮，点击后弹出模态框，输入用户名，搜索结果中点击添加</h5>
+                <h5 class="card-text mt-1">模糊搜索：好友搜索采用数据库的模糊搜索技术</h5>
+                <h5 class="card-text mt-1">删除好友：解除好友关系</h5>
+                <h5 class="card-text mt-1">好友主页：好友的聚合信息界面</h5>
+              </div>
+            </div>
+            <div class="mt-5">
+              <h3>聊天模块</h3>
+              <div class="card-text pl-5">
+                <h5 class="card-text mt-1">最近聊天：在聊天室的顶端，显示最近的聊天，点击可以进行聊天切换</h5>
+                <h5 class="card-text mt-1">发送表情：点击聊天窗口下方的表情，可以发送表情</h5>
+                <h5 class="card-text mt-1">消息弹窗：新消息弹窗，点击可以进入聊天立即回复，在任何界面都能收到消息的弹窗，在右下角弹窗</h5>
+                <h5 class="card-text mt-1">单人聊天：和好友一对一进行聊天，是多人聊天的一个特例</h5>
+                <h5 class="card-text mt-1">多人聊天：发起群聊，可以和多位用户进行聊天</h5>
+                <h5 class="card-text mt-1">退出聊天：点击按钮结束聊天，或者退出群聊，退出会清空聊天记录，请慎重</h5>
+              </div>
+            </div>
+            <div class="mt-5">
+              <h3>聊天管理</h3>
+              <div class="card-text pl-5">
+                <h5 class="card-text mt-1">在线用户：群聊中显示群内在线用户，点击用户可以进入用户主页</h5>
+                <h5 class="card-text mt-1">群内用户：管理面板显示群内所有用户，点击用户可以进入用户主页</h5>
+                <h5 class="card-text mt-1">清空聊天历史：可以清空当前聊天记录</h5>
+                <h5 class="card-text mt-1">拉人：房主可以拉人到当前聊天室</h5>
+                <h5 class="card-text mt-1">更改聊天室信息：房主可以更改聊天室名称</h5>
+                <h5 class="card-text mt-1">房主踢人：房主可以将除自己之外的用户踢出，按钮在用户头像右上角</h5>
+                <h5 class="card-text mt-1">房主权限转移：房主可以将自己的管理权限转移给聊天室中的某个用户</h5>
+              </div>
+            </div>
+            <div class="mt-5">
+              <h3>聊天机器人</h3>
+              <div class="card-text pl-5">
+                <h5 class="card-text mt-1">添加机器人好友：搜索robot，并添加好友，即可以和机器人聊天。机器人不能被拉入群聊</h5>
+                <h5 class="card-text mt-1">图灵机器人：调用图灵机器人的接口，并将图灵机器人返回的话反馈给用户</h5>
+                <h5 class="card-text mt-1">删除机器人好友：可以删除机器人，机器人永远在线</h5>
+              </div>
+            </div>
+            <div class="mt-5">
+              <h3>心情</h3>
+              <div class="card-text pl-5">
+                <h5 class="card-text mt-1">发送心情：用户聚合界面可以发送心情，包括带图片的心情</h5>
+                <h5 class="card-text mt-1">图片心情：用户聚合界面可以发送带图片的心情</h5>
+                <h5 class="card-text mt-1">时光轴：包含自己发送的所有的心情，包括点赞和删除按钮</h5>
+                <h5 class="card-text mt-1">好友动态：可以在用户聚合界面看到好友发送的动态心情，并点赞</h5>
+                <h5 class="card-text mt-1">点赞：可以对自己感兴趣的心情动态点赞，给好友的心情或者自己的点赞</h5>
+                <h5 class="card-text mt-1">删除心情：可以删除时光轴中的心情记录，同时会清空所有的点赞</h5>
+              </div>
+            </div>
+            <div class="mt-5">
+              <h3>在线发现</h3>
+              <div class="card-text pl-5">
+                <h5 class="card-text mt-1">在线好友：用户聚合界面可以查看所有在线的好友，可以点击聊天和删除，点击头像进入好友主页</h5>
+                <h5 class="card-text mt-1">发现：发现在线的陌生人。可以点击头像进入陌生人主页，后有添加按钮</h5>
+                <h5 class="card-text mt-1">共同好友：发现在线的陌生人。可以点击头像进入陌生人主页，后有添加按钮</h5>
+                <h5 class="card-text mt-1">可能认识的人：发现在线的陌生人。可以点击头像进入陌生人主页，后有添加按钮</h5>
+              </div>
+            </div>
+            <div class="mt-5">
+              <h3>足迹</h3>
+              <div class="card-text pl-5">
+                <h5 class="card-text mt-1">个人足迹：可以在用户信息聚合界面看到访客留言</h5>
+                <h5 class="card-text mt-1">好友足迹：可以在好友的主页看到好友的访客留言，点击留言即进入留言用户的主页</h5>
+                <h5 class="card-text mt-1">留下足迹：可以在其他用户的主页留下足迹</h5>
+              </div>
+            </div>
+            <div class="mt-5">
+              <h3>信息聚合</h3>
+              <div class="card-text pl-5">
+                <h5 class="card-text mt-1">个人信息聚合：包含个人信息，在线好友，发现，写心情，时光轴，好友动态，足迹</h5>
+                <h5 class="card-text mt-1">好友信息聚合：包含用户信息，共同好友，可能认识的人，他的时光轴，留下足迹，足迹</h5>
+              </div>
+            </div>
+            <div class="mt-5 mb-5">
+              <h3>界面美化</h3>
+              <div class="card-text pl-5">
+                <h5 class="card-text mt-1">采用 Material Design For Bootstrap 4 来设计界面，图标，配色美观大方，网页背景恰到好处，favicon和logo找人精心设计</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </main>
+  <%= render 'layouts/footer' %>
+</body>

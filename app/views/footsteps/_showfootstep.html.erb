@@ -1,0 +1,51 @@
+<div class="card card-cascade narrower mt-5" id="footstepshowpanel">
+  <div class="view view-cascade gradient-card-header orange narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+    <a href="" class="white-text mx-3">足迹</a>
+    <div>
+      <% if @userinfo.id == current_user.id %>
+      <a href="/chats/#footstepshowpanel" class="btn btn-success py-2 px-4" type="button">刷新</a>
+      <% else %>
+      <a href="/articles/<%= @userinfo.id %>/#footstepshowpanel" class="btn btn-success py-2 px-4" type="button">刷新</a>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="p-4 pb-5">
+    <% if @footstepall.count == 0 %>
+      <p class="px-4 card-text text-center">
+        快来第一个足迹吧
+      </p>
+    <% end %>
+    <% @footstepall.each do |footstep| %>
+      <hr class="my-0">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <a href="/articles/<%= footstep.footstepuser.id %>">
+
+        <% if footstep.footstepuser.picture? %>
+          <%= image_tag footstep.footstepuser.picture.url, class: "img-sm" %>
+        <% else %>
+           <%= image_tag "user-icon.png", class: "img-sm" %>
+        <% end %>
+
+            </a>
+          </div>
+          <div class="col-md-8 pl-0">
+            <h5 class="card-title">
+              <%= footstep.footstepuser.name %>
+            </h5>
+              <%= %>
+            <p class="card-text">
+              <%= footstep.created_at.to_s %>&nbsp;&nbsp;留下了足迹
+            </p>
+          </div>
+        </div>
+        <p class="card-text mt-2">
+          <%= footstep.content %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+</div>

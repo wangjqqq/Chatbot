@@ -1,0 +1,22 @@
+<script>
+  console.log("<%= message.body %>");
+	toastr.options = {
+	  "closeButton": true,
+	  "debug": false,
+	  "newestOnTop": false,
+	  "progressBar": false,
+	  "positionClass": "toast-bottom-right",
+	  "preventDuplicates": false,
+	  "onclick": null,
+	  "showDuration": 300,
+	  "hideDuration": 1000,
+	  "timeOut": 0,
+	  "extendedTimeOut": 0,
+	  "showEasing": "swing",
+	  "hideEasing": "linear",
+	  "showMethod": "fadeIn",
+	  "hideMethod": "fadeOut",
+	  "tapToDismiss": false
+	}
+	toastr['info']("<%= message.user.name %>&nbsp;&nbsp;发来消息：<br><%= truncate(message.body,length:20) %><br/><a href='/chats/<%= message.chat_id %>' class='btn btn-success btn-sm px-3 py-2'>点击进入</a>");
+</script>

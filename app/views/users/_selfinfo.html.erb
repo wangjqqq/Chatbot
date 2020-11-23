@@ -1,0 +1,40 @@
+<div class="card">
+  <!-- <h5 class="card-header h5"></h5> -->
+  <div class="card-body p-5">
+    <h5 class="card-title"><%= @userinfo[:name] %></h5>
+    <div class="row">
+    	<div class="col-md-6">
+		    <p class="card-text">
+          <%# if @userinfo.picture? %>
+            <%#= image_tag @userinfo.picture.url, class: "rounded-circle img-fluid", style: "height:130px;width:130px", alt: "avatar mx-auto white" %>
+          <%# else %>
+  	         <%= image_tag "user-icon.png", class: "rounded-circle img-fluid", style: "height:130px;width:130px", alt: "avatar mx-auto white" %>
+          <%# end %>
+		    </p>
+    	</div>
+    	<div class="col-md-6 p-4">
+		    <p class="card-text">用户名: <%= @userinfo[:name] %></p>
+		    <p class="card-text">邮箱: <%= @userinfo[:email] %></p>
+		    <p class="card-text">性别: <%= @userinfo[:sex] %></p>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-12">
+            <p class="card-text">职业: <%= @userinfo[:status] %></p>
+            <p class="card-text">电话: <%= @userinfo[:phonenumber] %></p>
+    		<p class="card-text">个性签名: </p>
+            <p class="card-text"><%= @userinfo.essay %></p>
+                
+    	</div>
+    </div>
+    <div class="row mt-3">
+    	<div class="col-md-12 text-right">
+        <% if current_user.id == @userinfo.id %>
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#changeinfo">更改信息</button>
+        <%= render 'users/changeinfo' %>
+    		<!-- <a href="" class="btn btn-primary">change info</a> -->
+        <% end %>
+    	</div>
+    </div>
+  </div>
+</div>

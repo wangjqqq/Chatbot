@@ -1,0 +1,13 @@
+<div class="nano has-scrollbar custom-scrollbar scrollbar-near-moon" style="height:400px">
+  <div class="nano-content pad-all" tabindex="0" style="right: -17px;">
+    <ul class="list-unstyled media-block">
+
+      <%= sync partial: 'message_row', collection: Message.by_chat(@chat), refetch: true %>
+      <%= sync_new partial: 'message_row', resource: Message.new, scope: @chat, refetch: true %>
+
+    </ul>
+  </div>
+  <div class="nano-pane">
+    <div class="nano-slider" style="height: 141px; transform: translate(0px, 0px);"></div>
+  </div>
+</div>
