@@ -1,11 +1,12 @@
 <li class="mar-btm">
   <div class="media-<%= current_user.id==message.user.id ? 'right' : 'left' %>">
 
-    <% if message.user.picture? %>
-      <%= image_tag message.user.picture.url, class: "img-sm" %>
-    <% else %>
-       <%= image_tag "user-icon.png", class: "img-sm" %>
-    <% end %>
+    <%# if message.user.picture? %>
+      <%#= image_tag message.user.picture.url, class: "img-sm" %>
+    <%# else %>
+
+    <%= image_tag "user-icon.png", class: "img-sm" %>
+    <%# end %>
 
   </div>
   <div class="media-body pad-hor <%= "speech-right" if current_user.id==message.user.id %>">
@@ -22,6 +23,7 @@
 </li>
 
 <script>
+    // alert('111')
     var $cont = $('.nano-content');
     $cont[0].scrollTop = $cont[0].scrollHeight;
 </script>

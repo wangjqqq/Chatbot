@@ -69,7 +69,7 @@ Rails.application.routes.draw do
 
   resources :chats do
     member do
-      patch :trans_authz
+      patch :trans_auth
       post :add_user
       delete :delete_user
     end

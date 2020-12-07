@@ -32,6 +32,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
+      # Rails.logger.info('success')
       flash={:info => "更新成功"}
     else
       flash={:warning => "更新失败"}

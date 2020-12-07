@@ -1,0 +1,2 @@
+module Sync::RefetchesHelper
+end

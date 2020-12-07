@@ -94,7 +94,19 @@
           <a class="emojiji"> 🍖 </a>
         </div>
         <script type="text/javascript">
-          $(".emojiji").on('click', function(){
+            $(document).ready(
+                function(){
+                    document.onkeydown = function()
+                    {
+                        var oEvent = window.event;
+                        if (oEvent.keyCode == 13 && oEvent.ctrlKey) {
+                            // alert("你按下了ctrl+enter");
+                            mes_send();
+                        }
+                    }
+                }
+            );
+            $(".emojiji").on('click', function(){
             tmp = $("#message_body").val();
             $("#message_body").val(tmp+$(this).html());
           })
@@ -117,73 +129,130 @@
 </script>
 
 <script type="text/javascript">
-  $("#msgSendBtn").on('click', function (){
-    if ($("#message_body").val() == ""){
-      return
-    }
-    if ($("#chat_first_user").val() == "robot@test.com" || $("#chat_second_user").val() == "robot@test.com" ){
-      bodymsg = $("#message_body").val();
-      targeturl = "http://openapi.tuling123.com/openapi/api/v2";
-      $.ajax({
-        type: 'POST',
-        url: '/sendtorobot',
-        dataType: 'JSON',
-        data: {
-          "body": bodymsg,
-          "targeturl": targeturl,
-          "chat_room": $("#chat_room").val()
-        },
-        success: function(data){
-          $("#message_body").val("");
-        },
-        error: function(data){
-          $("#message_body").val("");
+    function mes_send(){
+        if ($("#message_body").val() == ""){
+            alert("输入为空")
+            return
         }
-      })
-    }
-    else{
-      var msgdata = {
-        "controller": "messages",
-        "action": "create",
-        "message" : {
-          "body" : $("#message_body").val()
-        },
-        "chat_room" : $("#chat_room").val()
-      }
-      $.ajax({
-        type: 'POST',
-        url: '/messages',
-        dataType: "JSON",
-        data: msgdata,
-        success: function(data){
-          if(data.success == "1"){
-            toastr.options = {
-              "closeButton": true,
-              "debug": false,
-              "newestOnTop": false,
-              "progressBar": true,
-              "positionClass": "toast-bottom-right",
-              "preventDuplicates": false,
-              "onclick": null,
-              "showDuration": "300",
-              "hideDuration": "1000",
-              "timeOut": "5000",
-              "extendedTimeOut": "1000",
-              "showEasing": "swing",
-              "hideEasing": "linear",
-              "showMethod": "fadeIn",
-              "hideMethod": "fadeOut"
-            };
-            toastr['warning'](data.msg);
-          }
-          $("#message_body").val("");
-        },
-        error: function(data){
-          $("#message_body").val("");
+        if ($("#chat_first_user").val() == "robot@test.com" || $("#chat_second_user").val() == "robot@test.com" ){
+            bodymsg = $("#message_body").val();
+            targeturl = "http://openapi.tuling123.com/openapi/api/v2";
+            $.ajax({
+                type: 'POST',
+                url: '/sendtorobot',
+                dataType: 'JSON',
+                data: {
+                    "body": bodymsg,
+                    "targeturl": targeturl,
+                    "chat_room": $("#chat_room").val()
+                },
+                success: function(data){
+                    var now = new Date();
+                    var year = now.getFullYear(); //得到年份
+                    var month = now.getMonth()+1;//得到月份
+                    var date = now.getDate();//得到日期
+                    var day = now.getDay();//得到周几
+                    var hour = now.getHours();//得到小时
+                    var minu = now.getMinutes();//得到分钟
+                    var sec = now.getSeconds();//得到秒
+                    mytime = year + "-" + month + "-" + date+ " " + hour + ":" + minu + ":" + sec
+                    $("#message_body").val("");
+
+                    var str1='<li class="mar-btm">\n' +
+                        '  <div class="media-right">\n' +
+                        '\n' +
+                        '\n' +
+                        '    <img class="img-sm" src="/assets/user-icon-6122bab3bf45f283f96860b90f4e0846a25f9e68927904222c21e8d2ca26d79f.png">\n' +
+                        '\n' +
+                        '  </div>\n' +
+                        '  <div class="media-body pad-hor speech-right">\n' +
+                        '    <div class="speech">\n' +
+                        '      <p class="media-heading">我\n' +
+                        '        <text class="speech-time">\n' +
+                        '          <i class="fa fa-clock-o fa-fw"></i>\n' +
+                        mytime +
+                        '        </text>\n' +
+                        '      </p>\n' +
+                        '      <p style="margin-bottom: 5px; margin-top: 5px;">'+ bodymsg+'</p>\n' +
+                        '    </div>\n' +
+                        '  </div>\n' +
+                        '</li>'
+                    var str2 ='<li class="mar-btm">\n' +
+                        '  <div class="media-left">\n' +
+                        '\n' +
+                        '\n' +
+                        '    <img class="img-sm" src="/assets/user-icon-6122bab3bf45f283f96860b90f4e0846a25f9e68927904222c21e8d2ca26d79f.png">\n' +
+                        '\n' +
+                        '  </div>\n' +
+                        '  <div class="media-body pad-hor ">'+
+                        '<div class="speech">\n' +
+                        '      <p class="media-heading">robot@test.com\n' +
+                        '        <text class="speech-time">\n' +
+                        '          <i class="fa fa-clock-o fa-fw"></i>\n' +
+                        mytime +
+                        '        </text>\n' +
+                        '      </p>\n' +
+                        '      <p style="margin-bottom: 5px; margin-top: 5px;">'+data["ret_msg"]+'</p>\n' +
+                        '    </div>'
+                    // $(".list-unstyled")[0].append("<p>Hello</p>")
+                    $(".list-unstyled").append(str1)
+                    $(".list-unstyled").append(str2)
+                    document.getElementsByClassName("nano-content pad-all")[0].scrollTop= document.getElementsByClassName("nano-content pad-all")[0].scrollHeight
+                },
+                error: function(data){
+                    $("#message_body").val("");
+                }
+            })
         }
-      })
+        else{
+            // alert("发送成功!")
+            // location.reload();
+            var msgdata = {
+                "controller": "messages",
+                "action": "create",
+                "message" : {
+                    "body" : $("#message_body").val()
+                },
+                "chat_room" : $("#chat_room").val()
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/messages',
+                dataType: "JSON",
+                data: msgdata,
+                success: function(data){
+                    // alert("succeed 1")
+                    // alert(data.success)
+                    if(data.success == "1"){//发送失败的话 success 是1 这里是写一个警告框
+                        // alert("failed 2")
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": true,
+                            "positionClass": "toast-bottom-left",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        };
+                        toastr['warning'](data.msg);
+                    }
+                    $("#message_body").val("");//清空输入框
+                },
+                error: function(data){
+                    $("#message_body").val("");
+                }
+            })
+        }
     }
-  })
+  $("#msgSendBtn").on('click', mes_send)
   $("#msgClear").on('click', function(){
     $("#message_body").val("");
   })

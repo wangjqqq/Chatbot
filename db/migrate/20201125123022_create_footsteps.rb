@@ -1,6 +1,6 @@
 class CreateFootsteps < ActiveRecord::Migration[6.0]
   def change
-    drop_table :footsteps
+    #drop_table :footsteps
     create_table :footsteps do |t|
       t.integer :user_id
       t.string :content

@@ -17,8 +17,9 @@
   <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 
   <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%#= include_sync_config %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <%= include_sync_config %>
   <%= csrf_meta_tags %>
 
 </head>

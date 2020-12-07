@@ -3,8 +3,9 @@
     <ul class="list-unstyled media-block">
 
       <%= sync partial: 'message_row', collection: Message.by_chat(@chat), refetch: true %>
+<!--上面那一行-->
+      <%#= sync_new partial: 'message_row', resource: Message.new, scope: @chat, refetch: true %>
       <%= sync_new partial: 'message_row', resource: Message.new, scope: @chat, refetch: true %>
-
     </ul>
   </div>
   <div class="nano-pane">

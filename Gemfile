@@ -22,6 +22,13 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+
+gem 'faye'
+gem 'thin', require: false
+gem 'responders'
+gem 'pusher'
+gem 'render_sync'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
