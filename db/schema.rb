@@ -76,8 +76,8 @@ ActiveRecord::Schema.define(version: 2020_12_01_115030) do
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "online", default: 0
     t.string "essay", default: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,\n        adipisci."
+    t.integer "online", default: 0
     t.index ["email"], name: "index_users_on_email"
     t.index ["name"], name: "index_users_on_name"
   end
