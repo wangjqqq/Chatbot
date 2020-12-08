@@ -34,11 +34,11 @@
             <div class="col-md-2">
               <a class="text-white btn-floating" href="/articles/<%= user.id %>">
 
-        <%# if user.picture? %>
-          <%#= image_tag user.picture.url, class: "img-sm rounded float-left" %>
-        <%# else %>
+        <% if user.picture? %>
+          <%= image_tag user.picture.url, class: "img-sm rounded float-left" %>
+        <% else %>
            <%= image_tag "user-icon.png", class: "img-sm rounded float-left" %>
-        <%# end %>
+        <% end %>
 
                 <%= image_tag "user-icon.png", class: "img-sm rounded float-left" %>
               </a>

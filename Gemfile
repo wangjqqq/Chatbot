@@ -29,6 +29,7 @@ gem 'responders'
 gem 'pusher'
 gem 'render_sync'
 
+gem 'carrierwave'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

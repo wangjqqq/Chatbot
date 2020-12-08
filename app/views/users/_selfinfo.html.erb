@@ -5,11 +5,11 @@
     <div class="row">
     	<div class="col-md-6">
 		    <p class="card-text">
-          <%# if @userinfo.picture? %>
-            <%#= image_tag @userinfo.picture.url, class: "rounded-circle img-fluid", style: "height:130px;width:130px", alt: "avatar mx-auto white" %>
-          <%# else %>
+          <% if @userinfo.picture? %>
+            <%= image_tag @userinfo.picture.url, class: "rounded-circle img-fluid", style: "height:130px;width:130px", alt: "avatar mx-auto white" %>
+          <% else %>
   	         <%= image_tag "user-icon.png", class: "rounded-circle img-fluid", style: "height:130px;width:130px", alt: "avatar mx-auto white" %>
-          <%# end %>
+          <% end %>
 		    </p>
     	</div>
     	<div class="col-md-6 p-4">

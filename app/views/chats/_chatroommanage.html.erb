@@ -119,11 +119,11 @@
             <div class="card card-cascade" style="width: 70px; height: 100px">
               <div class="view view-cascade overlay">
 
-        <%# if user.picture? %>
-          <%#= image_tag user.picture.url, class: "card-img-top", style: "height: 70px; width: 70px", alt: "normal" %>
-        <%# else %>
+        <% if user.picture? %>
+          <%= image_tag user.picture.url, class: "card-img-top", style: "height: 70px; width: 70px", alt: "normal" %>
+        <% else %>
            <%= image_tag "user-icon.png", class: "card-img-top", style: "height: 70px; width: 70px", alt: "normal" %>
-        <%# end %>
+        <% end %>
 
                 <% if current_user.id==@chat.admin_id %>
                 <% if current_user.id!=user.id %>
@@ -151,11 +151,11 @@
         <div class="card card-cascade" style="width: 70px; height: 100px">
           <div class="view view-cascade overlay">
 
-        <%# if user.picture? %>
-          <%#= image_tag user.picture.url, class: "card-img-top", style: "height: 70px; width: 70px", alt: "normal" %>
-        <%# else %>
+        <% if user.picture? %>
+          <%= image_tag user.picture.url, class: "card-img-top", style: "height: 70px; width: 70px", alt: "normal" %>
+        <% else %>
            <%= image_tag "user-icon.png", class: "card-img-top", style: "height: 70px; width: 70px", alt: "normal" %>
-        <%# end %>
+        <% end %>
 
 
             <% if current_user.id==@chat.admin_id %>

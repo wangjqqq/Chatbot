@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :inverse_footsteps, :class_name => 'Footstep', :foreign_key => "footstepuser_id"
   has_many :inverse_footstepusers, :through => :inverse_footsteps, :source => :user
 
-  #mount_uploader :picture, PictureUploader
+  mount_uploader :picture, PictureUploader
 
   before_save :downcase_email
   attr_accessor :remember_token

@@ -21,6 +21,17 @@ class ChatsController < ApplicationController
     @userinfo = current_user
     @currentallchat = current_user.chats
     @footstepall = @userinfo.footsteps
+    robot = User.find_by(email: "robot@test.com")
+    if robot.nil?
+      robot = User.new(:name=> "robot", :email=> "robot@test.com", :online =>"1", :password=> "123456")
+      if robot.save!
+        flash= {success: "创建机器人成功"}
+        redirect_to chats_path, flash: flash
+      else
+        flash= {danger: "创建机器人失败，请联系管理人员"}
+        redirect_to root_path, flash: flash
+      end
+    end
   end
 
   def add_user

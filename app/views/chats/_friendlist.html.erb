@@ -14,11 +14,11 @@
 
       <div class="avatar mx-auto white">
 
-        <%# if user.picture? %>
-          <%#= image_tag user.picture.url, class: "rounded-circle img-fluid", style: "height:110px;width:110px", alt: "avatar mx-auto white" %>
-        <%# else %>
+        <% if user.picture? %>
+          <%= image_tag user.picture.url, class: "rounded-circle img-fluid", style: "height:110px;width:110px", alt: "avatar mx-auto white" %>
+        <% else %>
            <%= image_tag "user-icon.png", class: "rounded-circle img-fluid", style: "height:110px;width:110px", alt: "avatar mx-auto white" %>
-        <%# end %>
+        <% end %>
         <!-- <img src="img/head.jpg" alt="avatar mx-auto white" class="rounded-circle img-fluid"> -->
       </div>
 
