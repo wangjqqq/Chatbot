@@ -88,75 +88,7 @@ consumer.subscriptions.create("ChatChannel", {
       }
 
     })
-    // Called when there's incoming data on the websocket for this channel
-    //alert(Object.keys(data));
-    // alert(Object.keys((data.chat)));
-    // //alert(Object.keys(data));
-    // alert(Object.keys((data.chat)));
-    // alert(Object.keys((data.chat)));
-    // console.log(data.chat.id);
-    // console.log(data.chat.name);
-    // console.log(data.chat.description);
-    // console.log(data.chat.admin_id);
-    // console.log(data.sender_name);
-    // console.log(data.isyourself)
-    // console.log(current_user.id)
 
-    // var now = new Date();
-    // var year = now.getFullYear(); //得到年份
-    // var month = now.getMonth() + 1;//得到月份
-    // var date = now.getDate();//得到日期
-    // var day = now.getDay();//得到周几
-    // var hour = now.getHours();//得到小时
-    // var minu = now.getMinutes();//得到分钟
-    // var sec = now.getSeconds();//得到秒
-    // var mytime = year + "-" + month + "-" + date + " " + hour + ":" + minu + ":" + sec
-    // var str1 = '<li class="mar-btm">\n' +
-    //     '  <div class="media-right">\n' +
-    //     '\n' +
-    //     '\n' +
-    //     '    <img class="img-sm" src="/assets/user-icon-6122bab3bf45f283f96860b90f4e0846a25f9e68927904222c21e8d2ca26d79f.png">\n' +
-    //     '\n' +
-    //     '  </div>\n' +
-    //     '  <div class="media-body pad-hor speech-right">\n' +
-    //     '    <div class="speech">\n' +
-    //     '      <p class="media-heading">我\n' +
-    //     '        <text class="speech-time">\n' +
-    //     '          <i class="fa fa-clock-o fa-fw"></i>\n' +
-    //     mytime +
-    //     '        </text>\n' +
-    //     '      </p>\n' +
-    //     '      <p style="margin-bottom: 5px; margin-top: 5px;">' + data.body + '</p>\n' +
-    //     '    </div>\n' +
-    //     '  </div>\n' +
-    //     '</li>'
-    // var str2 = '<li class="mar-btm">\n' +
-    //     '  <div class="media-left">\n' +
-    //     '\n' +
-    //     '\n' +
-    //     '    <img class="img-sm" src="/assets/user-icon-6122bab3bf45f283f96860b90f4e0846a25f9e68927904222c21e8d2ca26d79f.png">\n' +
-    //     '\n' +
-    //     '  </div>\n' +
-    //     '  <div class="media-body pad-hor ">' +
-    //     '<div class="speech">\n' +
-    //     '      <p class="media-heading">' + data.sender_name + '\n' +
-    //     '        <text class="speech-time">\n' +
-    //     '          <i class="fa fa-clock-o fa-fw"></i>\n' +
-    //     mytime +
-    //     '        </text>\n' +
-    //     '      </p>\n' +
-    //     '      <p style="margin-bottom: 5px; margin-top: 5px;">' + data.body + '</p>\n' +
-    //     '    </div>'
-
-    // if (data.isyourself == true) {
-    //   $(".list-unstyled").append(str1);
-    //   $(".list-unstyled").append(str2);
-    //   alert("true  the message is sent by me!");
-    // }
-    // else{
-    //           $(".list-unstyled").append(str2);
-    // alert("false  the message is not sent by me!");
-    // }
 
   }
 // else{

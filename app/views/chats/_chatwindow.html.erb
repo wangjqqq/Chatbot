@@ -134,7 +134,9 @@
             alert("输入为空")
             return
         }
-        if ($("#chat_first_user").val() == "robot@test.com" || $("#chat_second_user").val() == "robot@test.com" ){
+
+        // if ($("#chat_first_user").val() == "robot@test.com" || $("#chat_second_user").val() == "robot@test.com" ){
+        if($("#chat_first_user").val().indexOf("robot")!=-1||$("#chat_second_user").val().indexOf("robot")!=-1 ){//不等于-1 证明是存在这个的 是机器人
             bodymsg = $("#message_body").val();
             targeturl = "http://openapi.tuling123.com/openapi/api/v2";
             $.ajax({
