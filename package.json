@@ -6,6 +6,8 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "bootstrap": "^4.5.3",
+    "bootstrap-select": "^1.13.18",
     "jquery": "^3.5.1",
     "turbolinks": "^5.2.0"
   },
