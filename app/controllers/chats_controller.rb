@@ -64,12 +64,15 @@ class ChatsController < ApplicationController
     @chat.users<<current_user
     @chat.admin_id=current_user.id
     @chat.name="#{user.name}-#{current_user.name}"
+    Rails.logger.info(user)
+    Rails.logger.info(current_user)
+    Rails.logger.info("==============================")
 
-    if @chat.save
+    if @chat.save!
       redirect_to chat_path(@chat)
     else
       flash[:warning] = "错误,请重试"
-      render chats_path, flash: flash
+      redirect_to chats_path
     end
   end
 
@@ -119,7 +122,7 @@ class ChatsController < ApplicationController
           redirect_to chat_path(@chat)
         else
           flash[:warning] = "错误,请重试"
-          render chats_path, flash: flash
+          redirect_to chats_path
         end
       else
         redirect_to chat_path(current_user.chats[0])

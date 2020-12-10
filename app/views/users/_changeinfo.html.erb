@@ -20,11 +20,11 @@
           </div>
 
           <div class="md-form form-sm">
-            <!-- <i class="fa fa-lock prefix"></i> -->
-            <%= f.label :sex, "性别" %>
-            <%= f.text_field :sex, class: 'form-control' %>
+          <%= f.label :sex, "性别" %>
+          <br>
+          <%= f.select :sex, options_for_select([['男', "男"], ['女', "女"], ['其他', "其他"]]),{},{:class => "selectpicker dropdown-menu-left"}%>
+         <%#= f.select :sex, options_for_select([["Public", "Public"], ["Private", "Private"]], :selected => f.object.sex), {}, {:class => 'form-control'} %>
           </div>
-
           <div class="md-form form-sm">
             <!-- <i class="fa fa-lock prefix"></i> -->
             <%= f.label :phonenumber, "电话" %>

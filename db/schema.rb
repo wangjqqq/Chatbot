@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 2020_12_09_122115) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "picture", default: "user-icon.png"
+    t.integer "like", default: 0
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -76,7 +78,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_122115) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "online", default: 0
-    t.string "essay", default: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,\n        adipisci."
+    t.string "essay", default: "写下你的个性签名吧"
     t.string "picture", default: "user-icon.png"
     t.index ["email"], name: "index_users_on_email"
     t.index ["name"], name: "index_users_on_name"

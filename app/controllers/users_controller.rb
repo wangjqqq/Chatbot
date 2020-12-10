@@ -14,13 +14,17 @@ class UsersController < ApplicationController
   def create
     @user=User.new(user_params)
     if @user.save
-      # @user.create_salary
-      # @user.create_performance
       log_in(@user)
       redirect_to chats_path, flash: {success: "创建成功"}
-    else
-      flash[:warning] = "账号信息填写有误,请重试"
-      redirect_to new_user_path
+    elsif @user.errors[:name].any? 
+        flash[:warning] = "用户名长度应少于255个字符，请重试"
+        redirect_to new_user_path
+    elsif @user.errors[:email].any?
+        flash[:warning] = "邮箱错误，请使用正确邮箱"
+        redirect_to new_user_path
+    elsif @user.errors[:password].any?
+        flash[:warning] = "密码长度应在6到18个字符之间，请重试"
+        redirect_to new_user_path
     end
   end
 
@@ -32,7 +36,6 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      # Rails.logger.info('success')
       flash={:info => "更新成功"}
     else
       flash={:warning => "更新失败"}
