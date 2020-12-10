@@ -7,10 +7,10 @@ class ArticlesController < ApplicationController
 			return
 		end
  		article = Article.new(get_params)
-		if article.save
+		if article.save!
 			redirect_to chats_path, flash: {"success": "发送成功"}
 		else
-			redirect_to chats_path, flash: {"error": "发送失败"}
+			redirect_to chats_path, flash: {"warning": "发送失败"}
 		end
 	end
 
