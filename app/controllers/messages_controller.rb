@@ -76,7 +76,7 @@ class MessagesController < ApplicationController
     chat.messages.delete_all
     redirect_to chat_path(chat), flash: {info: '聊天记录已清空'}
   end
-
+  #a||=b意思是：如果a是undefined, nil or false，则分配b给a。否则，保持a完整。
   def sendtorobot
     msg = Message.new(body: params[:body], user_id: current_user.id, chat_id: params[:chat_room])
     msg.save

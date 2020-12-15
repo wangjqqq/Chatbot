@@ -27,7 +27,7 @@ consumer.subscriptions.create("ChatChannel", {
       dataType: "JSON",
       data: msgdata,
       success: function(data_ajax) {
-        alert("能够接收到！")
+        // alert("能够接收到！")
         var now = new Date();
         var year = now.getFullYear(); //得到年份
         var month = now.getMonth() + 1;//得到月份
